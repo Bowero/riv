@@ -27,3 +27,14 @@ struct PostList {
 struct Result {
     data PostList
 }
+
+struct UserData {
+    display_name string
+    title string
+    public_description string
+    coins int
+}
+
+struct User {
+    subreddit UserData
+}

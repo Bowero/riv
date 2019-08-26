@@ -1,5 +1,7 @@
 module riv
 
+import http
+
 pub fn (s Subreddit) top(l int) ?[]Post {
     return s.sort(l, 'top')
 }

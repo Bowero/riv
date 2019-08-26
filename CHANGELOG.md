@@ -8,6 +8,13 @@
   + `.hot(limit int)`
   + `.controversial(limit int)`
   + `.rising(limit int)`
++ Initialize a `User` object with `reddit.user('name')`
+  + You can also select the user itself with `reddit.me()`
++ Get information from a user
+  + Display name
+  + Title
+  + Descriptions
+  + Coins
 
 ## V 0.0.1
 *25 aug 2019*
