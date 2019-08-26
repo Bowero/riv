@@ -1,5 +1,14 @@
 # Changelog
 
+## V 0.0.2
+*26 aug 2019*
+
++ Added more sorting options for subreddits
+  + `.new(limit int)`
+  + `.hot(limit int)`
+  + `.controversial(limit int)`
+  + `.rising(limit int)`
+
 ## V 0.0.1
 *25 aug 2019*
 

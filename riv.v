@@ -31,34 +31,3 @@ pub fn (r Reddit) subreddit(s string) Subreddit {
     }
     return sr
 }
-
-pub fn (s Subreddit) top(l int) ?[]Post {
-    url := '$base_url/r/$s.name/top?limit=$l'
-    mut req := http.new_request('GET', url, '') or {
-        panic('Error requesting subreddit')
-    }
-    req.add_header('Authorization', 'bearer ' + s.reddit.access_token)
-    response := req.do() or {
-        panic(err)
-    }
-    p := json.decode(Result, response.text) or {
-        panic(err)
-    }
-    return p.data.children
-}
-
-pub fn (p Post) title() string {
-    return p.data.title
-}
-
-pub fn (p Post) content() string {
-    return p.data.selftext
-}
-
-pub fn (p Post) upvotes() int {
-    return p.data.ups
-}
-
-pub fn (p Post) subreddit() string {
-    return p.data.subreddit
-}
