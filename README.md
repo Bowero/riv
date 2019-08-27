@@ -1,5 +1,5 @@
 # RIV: Reddit in V
-RIV is a wrapper for the Reddit API that allows you to easily gather information from the Reddit API. It is written completely in V, although Github marks it as Go as long as Linguist is not updated.
+RIV is a wrapper for the Reddit API that allows you to easily gather information from the Reddit API. It is written completely in V.
 
 ## Installation
 To install RIV, you can use [VPM](https://github.com/yue-best-practices/vpm).
