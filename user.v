@@ -3,7 +3,7 @@ module riv
 import http
 import json
 
-pub fn (r Reddit) me() ?User {
+pub fn (r Reddit) me() ?UserData {
     url := '$base_url/api/v1/me'
     mut req := http.new_request('GET', url, '') or {
         panic('Error requesting subreddit')
@@ -12,24 +12,39 @@ pub fn (r Reddit) me() ?User {
     response := req.do() or {
         panic(err)
     }
-    user := json.decode(User, response.text) or {
+    user := json.decode(UserWrapper, response.text) or {
         panic('Error decoding JSON')
     }
-    return user
+    return user.subreddit
 }
 
-pub fn (u User) name() string {
-    return u.subreddit.display_name
+pub fn (r Reddit) user(n string) ?UserData {
+    url := '$base_url/user/$n/about'
+    mut req := http.new_request('GET', url, '') or {
+        panic('Error requesting subreddit')
+    }
+    req.add_header('Authorization', 'bearer ' + r.access_token)
+    response := req.do() or {
+        panic(err)
+    }
+    user := json.decode(UserSearchWrapper, response.text) or {
+        panic('Error decoding JSON')
+    }
+    return user.data.subreddit
 }
 
-pub fn (u User) title() string {
-    return u.subreddit.title
+pub fn (u UserData) name() string {
+    return u.user_name
 }
 
-pub fn (u User) description() string {
-    return u.subreddit.public_description
+pub fn (u UserData) title() string {
+    return u.user_title
 }
 
-pub fn (u User) coins() int {
-    return u.subreddit.coins
+pub fn (u UserData) description() string {
+    return u.user_description
+}
+
+pub fn (u UserData) coins() int {
+    return u.user_coins
 }

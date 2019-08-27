@@ -29,12 +29,16 @@ struct Result {
 }
 
 struct UserData {
-    display_name string
-    title string
-    public_description string
-    coins int
+    user_name string [json:display_name]
+    user_title string [json:title]
+    user_description string [json:public_description]
+    user_coins int [json:coins]
 }
 
-struct User {
+struct UserWrapper {
     subreddit UserData
+}
+
+struct UserSearchWrapper {
+    data UserWrapper
 }
