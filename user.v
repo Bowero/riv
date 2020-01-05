@@ -1,5 +1,10 @@
 module riv
 
+import (
+    net.http
+    json
+)
+
 pub fn (r Reddit) me() ?UserData {
     url := '$base_url/api/v1/me'
     mut req := http.new_request('GET', url, '') or {
