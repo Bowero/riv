@@ -1,14 +1,15 @@
 module riv
 
-import json
-import http
-import encoding.base64
+import (
+    net.http
+    json
+)
 
 const (
     base_url = 'https://oauth.reddit.com/'
 )
 
-pub fn init(username string, password string, client_id string, client_secret string) ?Reddit {
+pub fn start(username string, password string, client_id string, client_secret string) ?Reddit {
     url := 'https://www.reddit.com/api/v1/access_token'
     args := 'grant_type=password&username=$username&password=$password'
 

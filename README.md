@@ -16,7 +16,7 @@ module main
 import riv
 
 fn main() {
-    r := riv.init('Bowero', '1234567890', 'a1b2c3d4e5','z26y25x24w23v22-u21') or {
+    r := riv.start('Bowero', '1234567890', 'a1b2c3d4e5','z26y25x24w23v22-u21') or {
         panic('AAAAH')
     }
     s := r.subreddit('jokes')
