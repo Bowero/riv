@@ -3,6 +3,7 @@ module riv
 import (
     net.http
     json
+    encoding.base64
 )
 
 const (
