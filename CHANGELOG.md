@@ -6,18 +6,6 @@
 + `init()` is no longer accepted
 + sorted the imports
 
-## V 0.0.3
-*2 sept 2019*
-
-+ Get comments on a post
-  + `.comments()` returns a list of comments
-+ Get information from a comment
-  + Lorem
-  + Ipsum
-  + Dolor
-  + Sit
-  + Amet
-
 ## V 0.0.2
 *26 aug 2019*
 
