@@ -1,10 +1,8 @@
 module riv
 
-import (
-    net.http
-    json
-    encoding.base64
-)
+import net.http 
+import json
+import encoding.base64
 
 const (
     base_url = 'https://oauth.reddit.com/'
@@ -12,9 +10,9 @@ const (
 
 pub fn start(username string, password string, client_id string, client_secret string) ?Reddit {
     url := 'https://www.reddit.com/api/v1/access_token'
-    args := 'grant_type=password&username=$username&password=$password'
+    args := 'grant_type=client_credentials&username=$username&password=$password'
 
-    mut req := http.new_request('POST', url, args) or {
+    mut req := http.new_request(.post, url, args) or {
         panic('Creating a new request failed')
     }
     req.add_header('Authorization', 'Basic ' + base64.encode('$client_id:$client_secret'))
@@ -22,7 +20,9 @@ pub fn start(username string, password string, client_id string, client_secret s
     response := req.do() or {
         panic(err)
     }
-    r := json.decode(Reddit, response.text)
+    r := json.decode(Reddit, response.text) or {
+        panic(err)
+    }
     return r
 }
 

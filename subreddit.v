@@ -1,9 +1,7 @@
 module riv
 
-import (
-    net.http
-    json
-)
+import net.http
+import json
 
 pub fn (s Subreddit) top(l int) ?[]Post {
     return s.sort(l, 'top')
@@ -27,7 +25,7 @@ pub fn (s Subreddit) rising(l int) ?[]Post {
 
 fn (s Subreddit) sort(l int, t string) ?[]Post { 
     url := '$base_url/r/$s.name/$t?limit=$l'
-    mut req := http.new_request('GET', url, '') or {
+    mut req := http.new_request(.get, url, '') or {
         panic('Error requesting subreddit')
     }
     req.add_header('Authorization', 'bearer ' + s.reddit.access_token)

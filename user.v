@@ -1,13 +1,11 @@
 module riv
 
-import (
-    net.http
-    json
-)
+import net.http
+import json
 
 pub fn (r Reddit) me() ?UserData {
     url := '$base_url/api/v1/me'
-    mut req := http.new_request('GET', url, '') or {
+    mut req := http.new_request(.get, url, '') or {
         panic('Error requesting subreddit')
     }
     req.add_header('Authorization', 'bearer ' + r.access_token)
@@ -22,7 +20,7 @@ pub fn (r Reddit) me() ?UserData {
 
 pub fn (r Reddit) user(n string) ?UserData {
     url := '$base_url/user/$n/about'
-    mut req := http.new_request('GET', url, '') or {
+    mut req := http.new_request(.get, url, '') or {
         panic('Error requesting subreddit')
     }
     req.add_header('Authorization', 'bearer ' + r.access_token)
