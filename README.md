@@ -2,18 +2,19 @@
 RIV is a wrapper for the Reddit API that allows you to easily gather information from the Reddit API. It is written completely in V.
 
 ## Installation
-To install RIV, you can use [VPM](https://github.com/yue-best-practices/vpm).
+To install RIV, you can use [VPM](https://vpm.vlang.io/).
 
 ```bash
-$ vpm init
-$ vpm get https://github.com/Bowero/riv riv
+$ v install Bowero.riv
 ```
 
+Please note: Due to a bug, you will have to rename the folder to `bowero.riv`. So no uppercases.
+
 ## Quickstart
-```go
+```v
 module main
 
-import riv
+import bowero.riv
 
 fn main() {
     r := riv.start('Bowero', '1234567890', 'a1b2c3d4e5','z26y25x24w23v22-u21') or {
